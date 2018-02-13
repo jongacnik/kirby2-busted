@@ -11,5 +11,8 @@
  */
 
 function busted ($path) {
-  return $path . '?v=' . filemtime(__DIR__ . '/../../../' . $path);
+  $file = (__DIR__ . '/../../../' . $path);
+  return file_exists($file)
+    ? $path . '?v=' . filemtime($file)
+    : $path;
 }
