@@ -2,7 +2,7 @@
 
 /**
  * KirbyBusted
- * Dead simple kirby asset busting. Assumes default kirby directory structure.
+ * Dead simple kirby asset busting.
  *
  * Example:
  * css(busted('assets/css/bundle.css'))
@@ -11,7 +11,7 @@
  */
 
 function busted ($path) {
-  $file = (__DIR__ . '/../../../' . $path);
+  $file = (kirby()->roots()->index() . DS . $path);
   return file_exists($file)
     ? $path . '?v=' . filemtime($file)
     : $path;
